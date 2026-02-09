@@ -1,0 +1,64 @@
+name: prodine_pos
+description: "Restuarent POS SYSTEM -"
+publish_to: 'GitHUb'
+version: 0.1.4
+
+environment:
+  sdk: '>=3.0.0 <4.0.0' # adjusted to a safer standard range
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1 # Reverted to stable 2.x unless you specifically need 3.0 dev
+  intl: ^0.20.2
+  path_provider: ^2.1.2
+  pdf: ^3.10.8
+  printing: ^5.11.0
+  window_manager: ^0.5.1
+  auto_updater: ^0.1.6
+  device_info_plus: ^10.1.2
+  crypto: ^3.0.3
+  shared_preferences: ^2.3.2
+  image_picker: ^1.1.2
+  file_picker: ^8.1.4
+  package_info_plus: ^8.0.2
+  url_launcher: ^6.3.1
+  http: ^1.2.2
+  supabase_flutter: ^2.8.1
+  connectivity_plus: ^6.1.0
+  encrypt: ^5.0.3
+  flutter_localizations:
+    sdk: flutter
+  sqflite_common_ffi: ^2.3.3
+  google_fonts: ^6.3.2
+  uuid: ^4.5.1
+  path: ^1.9.0
+  
+  # Drift Database
+  drift: ^2.20.2
+  sqlite3_flutter_libs: ^0.5.24 # Add this for better cross-platform support
+  sqflite: ^2.4.2
+  build_runner: ^2.10.5
+  dio: ^5.9.1
+  open_file: ^3.5.11
+  flutter_dotenv: ^6.0.0
+  basic_utils: ^5.7.0
+  pointycastle: ^3.9.1
+  ntp: ^2.0.0
+  fl_chart: ^0.63.0
+  virtual_keyboard_multi_language: ^1.1.2
+  share_plus: ^12.0.1
+  syncfusion_flutter_charts: ^31.1.19
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  
+  # Code Generators (Required)
+  drift_dev: ^2.20.2 # THIS WAS MISSING
+
+flutter:
+  uses-material-design: true
+  assets:
+   - assets/logo.png
