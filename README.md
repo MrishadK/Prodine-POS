@@ -95,7 +95,6 @@ External service integrations
 
 ### 📂 **widgets/**
 Reusable UI components
-- `keyboard_widget.dart` - Custom numeric/keyboard input
 - `menu_grid_widget.dart` - Product menu display grid
 - Other shared UI components (buttons, dialogs, cards)
 
