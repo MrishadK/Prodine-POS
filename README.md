@@ -27,7 +27,25 @@ From quick order entry to real-time reports, everything is designed to reduce st
 | 🔐 Licensing System | Built-in license verification & admin key system |
 
 ---
+## 📸 Screenshots
 
+### 🧾 POS Screen
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/14a02fc9-76b3-46b4-8d04-72702f3f1980" width="900"/>
+</p>
+
+### 🍔 Menu Management
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fbe90fef-dfc0-4353-93bb-a769ecacd43d" width="900"/>
+</p>
+
+### 📊 Reports Dashboard
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/897d41b9-c57b-49e1-a63b-90438f7f745d" width="900"/>
+</p>
+
+
+---
 ## 🚀 Key Screens
 
 - `pos_screen.dart` → Main billing interface  
