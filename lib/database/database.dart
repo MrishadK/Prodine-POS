@@ -13,7 +13,6 @@ part 'database.g.dart';
 @DataClassName('OrderRow')
 class Orders extends Table {
   TextColumn get id => text()();
-  // ✅ ADDED NEW COLUMNS
   TextColumn get invoiceNumber => text()();
   TextColumn get ticketNumber => text()();
 
@@ -64,7 +63,6 @@ class AppDatabase extends _$AppDatabase {
 
       return model.Order(
         id: row.id,
-        // ✅ Map new columns to model
         invoiceNumber: row.invoiceNumber,
         ticketNumber: row.ticketNumber,
         dateTime: row.orderDate,
@@ -79,7 +77,6 @@ class AppDatabase extends _$AppDatabase {
     await into(orders).insert(
       OrdersCompanion.insert(
         id: order.id,
-        // ✅ Insert new columns
         invoiceNumber: order.invoiceNumber,
         ticketNumber: order.ticketNumber,
         orderDate: order.dateTime,
