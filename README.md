@@ -47,7 +47,7 @@ From quick order entry to real-time reports, everything is designed to reduce st
 | State Management | Provider |
 | Database | Drift / SQLite (Local SQL) |
 | Architecture | MVVM (Models – Views – Providers) |
-| Platforms | Windows • Android • Linux • macOS |
+| Platforms | Windows |
 
 ---
 
