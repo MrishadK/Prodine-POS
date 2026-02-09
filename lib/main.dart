@@ -17,7 +17,6 @@ Future<void> main() async {
 
   WindowOptions windowOptions = const WindowOptions(
     size: Size(1280, 720),
-    // ✅ ADD THIS LINE: This prevents the user from shrinking the window below 1024x700
     minimumSize: Size(1280, 700),
     center: true,
     backgroundColor: Color(0xFFE8EAF0),
@@ -52,7 +51,7 @@ class RestaurantPOSApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor:
-            const Color(0xFFE8EAF0), // Ensure solid background
+            const Color(0xFFE8EAF0),
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF2C5F7C),
           brightness: Brightness.light,
@@ -65,7 +64,6 @@ class RestaurantPOSApp extends StatelessWidget {
           ),
         ),
       ),
-      // Wrapped in Material to ensure text renders correctly even if overlays are used
       builder: (context, child) => Material(
         type: MaterialType.transparency,
         child: child!,
