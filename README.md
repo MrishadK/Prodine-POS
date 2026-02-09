@@ -23,10 +23,8 @@ From quick order entry to real-time reports, everything is designed to reduce st
 | 🧮 Order Management | Create, modify & track orders with live summaries |
 | 🖨️ Printing Support | Thermal printer integration for receipts |
 | 📊 Reports & Sales | View history and generate sales reports |
-| ⌨️ Touch Optimization | Custom virtual keyboard for touch systems |
 | 💾 Offline Database | Local storage ensures reliability without internet |
 | 🔐 Licensing System | Built-in license verification & admin key system |
-| 🖥️ Cross Platform | Windows, Android, Linux & macOS supported |
 
 ---
 
