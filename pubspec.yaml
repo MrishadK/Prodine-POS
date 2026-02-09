@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.6.1 # Reverted to stable 2.x unless you specifically need 3.0 dev
+  flutter_riverpod: ^2.6.1
   intl: ^0.20.2
   path_provider: ^2.1.2
   pdf: ^3.10.8
@@ -56,7 +56,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   
   # Code Generators (Required)
-  drift_dev: ^2.20.2 # THIS WAS MISSING
+  drift_dev: ^2.20.2
 
 flutter:
   uses-material-design: true
