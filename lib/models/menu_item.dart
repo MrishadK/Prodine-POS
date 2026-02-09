@@ -4,7 +4,6 @@ class MenuItem {
   final double price; // This is the Base Price (Full / 1.0)
   final String category;
 
-  // ✅ NEW: Optional Custom Prices for specific portions
   final double? priceQuarter; // Price for 0.25
   final double? priceHalf; // Price for 0.50
   final double? priceThreeQuarter; // Price for 0.75
@@ -35,7 +34,6 @@ class MenuItem {
       name: json['name'],
       price: (json['price'] as num).toDouble(),
       category: json['category'],
-      // ✅ Load new fields (nullable)
       priceQuarter: (json['priceQuarter'] as num?)?.toDouble(),
       priceHalf: (json['priceHalf'] as num?)?.toDouble(),
       priceThreeQuarter: (json['priceThreeQuarter'] as num?)?.toDouble(),
