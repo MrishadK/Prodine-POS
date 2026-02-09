@@ -156,6 +156,10 @@ dart run build_runner build --delete-conflicting-outputs
 flutter run -d windows
 ```
 
+## 💰 Currency Support
+
+ProDine POS is configured to use **SAR (Saudi Riyal)** as the default currency for all transactions, billing, and reports.
+
 ## 🔐 Licensing
 
 ProDine POS includes a secure license verification system to control installations and prevent unauthorized usage.
