@@ -1,9 +1,9 @@
 # 🍽️ ProDine POS  
 ### Smart • Fast • Offline-Ready Restaurant POS built with Flutter
 
-**ProDine POS** is a modern, cross-platform **Point of Sale (POS)** system designed for **restaurants, cafés, and food businesses** that need speed, reliability, and simplicity.
+**ProDine POS** is a modern, Windows platform **Point of Sale (POS)** system designed for **restaurants, cafés, and food businesses** that need speed, reliability, and simplicity.
 
-Built with **Flutter**, it delivers a **touch-friendly**, **offline-capable**, and **thermal-printer-ready** solution for real-world service environments.
+Built with **Flutter**, it delivers a **offline-capable**, and **thermal-printer-ready** solution for real-world service environments.
 
 > ⚡ Optimized for high-speed order taking  
 > 🧾 Built-in receipt printing  
