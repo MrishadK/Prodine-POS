@@ -11,19 +11,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
 
 class LicenseService {
-  // ✅ SAME KEY AS PYTHON
   static const String _aesKeyStr =
-      '7T_w9y0M2X8q1N4v5E6r7T8y9U0i1O2p3A4s5D6f7G8=';
+      '<aeskey>';
 
-  // ✅ YOUR UPLOADED PUBLIC KEY
   static const String publicKeyPem = """-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv653YqGLZzOv+AOzzjE4
-LHY7hrTnpBYhthuEe010yoUf4Ar3Sh4xiyKioWa7MklBs3p35glTHAZXpCu5AWq2
-8wmv25jr+dq0UKHU8qlc9PopUWA4KgctcWwth9IVaL0Cm4tUVZ9HyYAm03xioiH7
-d2zDaj7GnbL411jJr7ts+oa1xiQpgfNCSxwA4NzDPrMChoJFw+GHGyYSQvh4UYFZ
-dj5OSs51UZjnRQ2/iOQkBzMMk3gwVKyldMC/YCRaIct7sJdJ1IFu/xVkNnIPyG56
-nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
-7wIDAQAB
+<Key Here>
+  
 -----END PUBLIC KEY-----""";
 
   static const String _licenseExpiryCacheKey = 'license_expiry_cache';
@@ -61,7 +54,7 @@ nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
 
       // 1. Verify RSA Signature
       if (!_verifySignature(licenseJson, signature)) {
-        print("❌ RSA Signature Invalid!");
+        print("RSA Signature Invalid!");
         return false;
       }
 
@@ -71,7 +64,7 @@ nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
       // 3. Device ID Check
       final currentDeviceId = await getDeviceId();
       if (data['device'] != currentDeviceId) {
-        print("❌ Device ID mismatch");
+        print("Device ID mismatch");
         return false;
       }
 
@@ -80,7 +73,7 @@ nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
         final expiryDate = DateTime.parse(data['expiry']);
         final now = DateTime.now();
         if (now.isAfter(expiryDate)) {
-          print("❌ License Expired");
+          print("License Expired");
           return false;
         }
       }
@@ -128,7 +121,6 @@ nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
     }
   }
 
-  // --- HELPERS ---
 
   static Future<String> getDeviceId() async {
     if (Platform.isWindows) {
@@ -180,7 +172,7 @@ nA3TCNUrE0kPVYh1aLbUhVdeO0vC8fVkEiSCxuS00XYowDp/NMrOq2N2sc5Gr4oy
       if (data.containsKey('expiry')) {
         final expiryDate = DateTime.parse(data['expiry']);
         if (DateTime.now().isAfter(expiryDate)) {
-          return true; // ✅ Yes, it is expired
+          return true;
         }
       }
       return false;
