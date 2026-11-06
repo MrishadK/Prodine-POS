@@ -61,7 +61,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
               surface: Color(0xFFF5F7FA),
               onSurface: Colors.black,
             ),
-            dialogBackgroundColor: Colors.white,
+            dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
           ),
           child: child!,
         );
@@ -92,7 +92,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
               surface: Color(0xFFF5F7FA),
               onSurface: Colors.black,
             ),
-            dialogBackgroundColor: Colors.white,
+            dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
           ),
           child: child!,
         );
@@ -130,8 +130,8 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
           pw.SizedBox(height: 20),
           pw.Text(
               'Report generated on ${DateFormat('yyyy-MM-dd HH:mm').format(DateTime.now())}',
-              style: pw.TextStyle(
-                  fontSize: 10, color: const PdfColor.fromInt(0xFF666666))),
+              style: const pw.TextStyle(
+                  fontSize: 10, color: PdfColor.fromInt(0xFF666666))),
         ],
       ),
     );
@@ -147,9 +147,13 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
         '${directory.path}/sales_report_${DateTime.now().millisecondsSinceEpoch}.csv');
     await file.writeAsString(csvContent);
 
-    await Share.shareXFiles([XFile(file.path)],
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [XFile(file.path)],
         text:
-            'Sales Report ${DateFormat('yyyy-MM-dd').format(DateTime.now())}');
+            'Sales Report ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
+      ),
+    );
   }
 
   String _generateCsvContent(
@@ -350,7 +354,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
   pw.Widget _buildPdfTimeRange() {
     return pw.Row(
       children: [
-        pw.Icon(pw.IconData(0xe192),
+        pw.Icon(const pw.IconData(0xe192),
             size: 12, color: const PdfColor.fromInt(0xFF666666)),
         pw.SizedBox(width: 8),
         pw.Text(
@@ -434,22 +438,6 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
       'revenue': revenue,
       'sortedItems': sortedItems,
     };
-  }
-
-  List<Map<String, dynamic>> _getDailyRevenueData(List<Order> orders) {
-    final Map<DateTime, double> dailyRevenue = {};
-    for (final order in orders) {
-      final dateOnly = DateTime(
-          order.dateTime.year, order.dateTime.month, order.dateTime.day);
-      dailyRevenue[dateOnly] = (dailyRevenue[dateOnly] ?? 0) + order.total;
-    }
-    final sortedKeys = dailyRevenue.keys.toList()..sort();
-    return sortedKeys.map((date) {
-      return {
-        'label': DateFormat('MMM dd').format(date),
-        'revenue': dailyRevenue[date],
-      };
-    }).toList();
   }
 
   List<Map<String, dynamic>> _getHourlyData(List<Order> orders) {
@@ -711,7 +699,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -773,14 +761,14 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: iconColor.withOpacity(0.1),
+        color: iconColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: iconColor.withOpacity(0.2)),
+        border: Border.all(color: iconColor.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: iconColor.withOpacity(0.2),
+            backgroundColor: iconColor.withValues(alpha: 0.2),
             radius: 20,
             child: Icon(icon, color: iconColor, size: 18),
           ),
@@ -852,7 +840,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -919,7 +907,8 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
         columnSpacing: 20,
         horizontalMargin: 0, // Tight layout
         headingRowHeight: 40,
-        dataRowHeight: 45,
+        dataRowMinHeight: 45,
+        dataRowMaxHeight: 45,
         columns: const [
           DataColumn(label: Text('#')),
           DataColumn(label: Text('Item')),
@@ -1052,7 +1041,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -1134,7 +1123,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                       backDrawRodData: BackgroundBarChartRodData(
                         show: true,
                         toY: maxYValue,
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withValues(alpha: 0.1),
                       ),
                     ),
                   ],

@@ -54,11 +54,15 @@ class OrderNotifier extends StateNotifier<Order?> {
 
   // ... (Keep existing _calculateAdjustedPrice, addItem, updateQuantity, removeItem methods same as before) ...
   double _calculateAdjustedPrice(MenuItem item, double quantity) {
-    if (quantity == 0.25 && item.priceQuarter != null)
+    if (quantity == 0.25 && item.priceQuarter != null) {
       return item.priceQuarter! / 0.25;
-    if (quantity == 0.5 && item.priceHalf != null) return item.priceHalf! / 0.5;
-    if (quantity == 0.75 && item.priceThreeQuarter != null)
+    }
+    if (quantity == 0.5 && item.priceHalf != null) {
+      return item.priceHalf! / 0.5;
+    }
+    if (quantity == 0.75 && item.priceThreeQuarter != null) {
       return item.priceThreeQuarter! / 0.75;
+    }
     return item.price;
   }
 
@@ -74,11 +78,13 @@ class OrderNotifier extends StateNotifier<Order?> {
       updateQuantity(menuItem.id, existingItem.quantity + quantity);
     } else {
       String nameSuffix = "";
-      if (quantity == 0.5)
+      if (quantity == 0.5) {
         nameSuffix = " (Half)";
-      else if (quantity == 0.25)
+      } else if (quantity == 0.25) {
         nameSuffix = " (Quarter)";
-      else if (quantity == 0.75) nameSuffix = " (3/4)";
+      } else if (quantity == 0.75) {
+        nameSuffix = " (3/4)";
+      }
 
       double finalPrice = _calculateAdjustedPrice(menuItem, quantity);
 
@@ -108,11 +114,13 @@ class OrderNotifier extends StateNotifier<Order?> {
         double newPrice = _calculateAdjustedPrice(item.menuItem, quantity);
         String baseName = item.menuItem.name;
         String newName = baseName;
-        if (quantity == 0.5)
+        if (quantity == 0.5) {
           newName = "$baseName (Half)";
-        else if (quantity == 0.25)
+        } else if (quantity == 0.25) {
           newName = "$baseName (Quarter)";
-        else if (quantity == 0.75) newName = "$baseName (3/4)";
+        } else if (quantity == 0.75) {
+          newName = "$baseName (3/4)";
+        }
 
         return item.copyWith(
           quantity: quantity,

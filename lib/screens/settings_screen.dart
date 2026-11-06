@@ -7,7 +7,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:file_picker/file_picker.dart'; // ✅ Required for extension
 
 import '../providers/settings_provider.dart';
-import '../models/restaurant_settings.dart';
 import '../services/license_service.dart';
 import '../screens/license_screen.dart';
 
@@ -94,7 +93,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['lic'],
+        allowedExtensions: ['lic', 'txt', 'dat'],
       );
 
       if (result != null && result.files.single.path != null) {
@@ -103,11 +102,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         final file = File(result.files.single.path!);
         final content = await file.readAsString();
 
-        final success = await LicenseService.updateLicense(content);
+        final validationResult =
+            await LicenseService.updateLicenseDetailed(content);
 
         setState(() => _isSaving = false);
 
-        if (success) {
+        if (validationResult.isValid) {
           await _loadLicenseInfo();
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -121,8 +121,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         } else {
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Invalid License File.'),
+              SnackBar(
+                content: Text(validationResult.message),
                 backgroundColor: Colors.red,
                 behavior: SnackBarBehavior.floating,
               ),
@@ -346,12 +346,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
+                          const Row(
                             children: [
-                              const Icon(Icons.settings,
+                              Icon(Icons.settings,
                                   color: Color(0xFF2C5F7C)),
-                              const SizedBox(width: 12),
-                              const Text('Restaurant Configuration',
+                              SizedBox(width: 12),
+                              Text('Restaurant Configuration',
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -536,10 +536,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: Colors.blue.withOpacity(0.05),
+                                color: Colors.blue.withValues(alpha: 0.05),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                    color: Colors.blue.withOpacity(0.2)),
+                                    color: Colors.blue.withValues(alpha: 0.2)),
                               ),
                               child: Row(
                                 children: [
@@ -553,7 +553,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                                         Text(
                                           _expiryDate != null
                                               ? "Valid until: ${DateFormat('yyyy-MM-dd').format(_expiryDate!)}"
-                                              : "License Active",
+                                              : (_isLicensed
+                                                  ? "License Active"
+                                                  : "No Active License"),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),

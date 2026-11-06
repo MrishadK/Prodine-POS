@@ -51,7 +51,7 @@ class _AppVirtualKeyboardState extends State<AppVirtualKeyboard> {
               const Border(top: BorderSide(color: Color(0xFF2C5F7C), width: 2)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               blurRadius: 10,
               offset: const Offset(0, -4),
             )

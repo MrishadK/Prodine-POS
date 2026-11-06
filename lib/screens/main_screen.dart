@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../widgets/sidebar_menu.dart';
-import '../providers/order_provider.dart';
 import '../services/license_service.dart';
 
 import 'pos_screen.dart';

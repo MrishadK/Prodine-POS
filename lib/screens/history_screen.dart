@@ -40,7 +40,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               onPrimary: Colors.white,
               onSurface: Colors.black,
             ),
-            dialogBackgroundColor: Colors.white,
+            dialogTheme: const DialogThemeData(
+              backgroundColor: Colors.white,
+            ),
           ),
           child: child!,
         );
@@ -149,7 +151,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
         elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withValues(alpha: 0.1),
       ),
       body: Column(
         children: [
@@ -160,7 +162,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               color: const Color(0xFF2C5F7C),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -175,7 +177,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                       Text(
                         'Today\'s Sales',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
@@ -195,7 +197,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 Container(
                   width: 1,
                   height: 40,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha: 0.3),
                 ),
                 Expanded(
                   child: Column(
@@ -204,7 +206,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                       Text(
                         'Filtered Total',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
@@ -377,8 +379,8 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                       _selectedFilter != 'all')
                     GestureDetector(
                       onTap: _clearFilters,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           Icon(Icons.clear_all, size: 16, color: Colors.grey),
                           SizedBox(width: 4),
                           Text(
@@ -452,7 +454,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
+                              color: Colors.black.withValues(alpha: 0.05),
                               blurRadius: 8,
                               offset: const Offset(0, 2),
                             ),
@@ -500,9 +502,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                                               decoration: BoxDecoration(
                                                 color: isToday
                                                     ? Colors.green
-                                                        .withOpacity(0.1)
+                                                        .withValues(alpha: 0.1)
                                                     : const Color(0xFF2C5F7C)
-                                                        .withOpacity(0.1),
+                                                        .withValues(alpha: 0.1),
                                                 borderRadius:
                                                     BorderRadius.circular(4),
                                               ),
@@ -576,7 +578,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: const Color(0xFF2C5F7C)
-                                              .withOpacity(0.1),
+                                              .withValues(alpha: 0.1),
                                           borderRadius:
                                               BorderRadius.circular(6),
                                         ),
@@ -730,7 +732,7 @@ class BillViewerDialog extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.15),
+                color: Colors.black.withValues(alpha: 0.15),
                 blurRadius: 30,
                 offset: const Offset(0, 10),
               ),
@@ -768,7 +770,7 @@ class BillViewerDialog extends StatelessWidget {
                     IconButton(
                       icon: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
+                          color: Colors.white.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(4),

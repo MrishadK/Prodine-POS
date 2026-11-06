@@ -46,7 +46,7 @@ class ThermalPrinterService {
 
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat(80 * PdfPageFormat.mm, double.infinity),
+        pageFormat: const PdfPageFormat(80 * PdfPageFormat.mm, double.infinity),
         margin: const pw.EdgeInsets.all(5),
         build: (context) => pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.center,
@@ -134,7 +134,7 @@ class ThermalPrinterService {
                   ],
                 ),
               );
-            }).toList(),
+            }),
 
             pw.Divider(thickness: 0.5),
             _buildTotalRow(
@@ -174,7 +174,7 @@ class ThermalPrinterService {
 
     pdf.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat(80 * PdfPageFormat.mm, double.infinity),
+        pageFormat: const PdfPageFormat(80 * PdfPageFormat.mm, double.infinity),
         margin: const pw.EdgeInsets.all(5),
         build: (context) => pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,

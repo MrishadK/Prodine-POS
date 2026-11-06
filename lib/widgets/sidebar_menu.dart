@@ -50,7 +50,7 @@ class SidebarMenu extends ConsumerWidget {
               height: 100,
               width: 100,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
+                color: Colors.white.withValues(alpha: 0.05),
                 shape: BoxShape.circle,
               ),
               padding: const EdgeInsets.all(16),
@@ -198,7 +198,7 @@ class _SidebarMenuItemState extends State<_SidebarMenuItem> {
     // Active Color Logic
     final Color activeBg = widget.isPrimary
         ? const Color(0xFF2C5F7C) // Standard Blue
-        : const Color(0xFF2C5F7C).withOpacity(0.5);
+        : const Color(0xFF2C5F7C).withValues(alpha: 0.5);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -215,7 +215,7 @@ class _SidebarMenuItemState extends State<_SidebarMenuItem> {
               color: widget.isActive
                   ? activeBg
                   : _isHovering
-                      ? Colors.white.withOpacity(0.05)
+                      ? Colors.white.withValues(alpha: 0.05)
                       : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
               border: widget.isActive
@@ -224,7 +224,7 @@ class _SidebarMenuItemState extends State<_SidebarMenuItem> {
               boxShadow: widget.isActive
                   ? [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withValues(alpha: 0.2),
                         blurRadius: 8,
                         offset: const Offset(0, 4),
                       )

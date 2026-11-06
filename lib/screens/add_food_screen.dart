@@ -81,7 +81,7 @@ class _AddFoodScreenState extends ConsumerState<AddFoodScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Delete '${_selectedCategory}'?"),
+        title: Text("Delete '$_selectedCategory'?"),
         content: const Text(
             "This will delete the category and ALL items inside it.\nThis action cannot be undone."),
         actions: [
@@ -200,7 +200,7 @@ class _AddFoodScreenState extends ConsumerState<AddFoodScreen> {
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black.withOpacity(0.05), blurRadius: 10)
+                          color: Colors.black.withValues(alpha: 0.05), blurRadius: 10)
                     ]),
                 child: Form(
                   key: _formKey,
@@ -247,7 +247,7 @@ class _AddFoodScreenState extends ConsumerState<AddFoodScreen> {
                           children: [
                             Expanded(
                               child: DropdownButtonFormField<String>(
-                                value: _selectedCategory,
+                                initialValue: _selectedCategory,
                                 items: availableCategories
                                     .map((c) => DropdownMenuItem(
                                         value: c, child: Text(c)))
@@ -328,7 +328,7 @@ class _AddFoodScreenState extends ConsumerState<AddFoodScreen> {
                             title: const Text('Enable Custom Portions',
                                 style: TextStyle(fontWeight: FontWeight.w600)),
                             subtitle: const Text("Quarter, Half, 3/4 pricing"),
-                            activeColor: const Color(0xFF2C5F7C),
+                            activeThumbColor: const Color(0xFF2C5F7C),
                             value: _enablePortions,
                             onChanged: availableCategories.isEmpty
                                 ? null

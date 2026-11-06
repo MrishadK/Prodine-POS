@@ -62,7 +62,7 @@ class MenuGrid extends ConsumerWidget {
   Widget _buildMenuCard(BuildContext context, WidgetRef ref, MenuItem item) {
     // Generate a consistent color based on item name hash
     final colorIndex = item.name.codeUnitAt(0) % Colors.primaries.length;
-    final accentColor = Colors.primaries[colorIndex].withOpacity(0.1);
+    final accentColor = Colors.primaries[colorIndex].withValues(alpha: 0.1);
     final iconColor = Colors.primaries[colorIndex];
 
     return Card(
